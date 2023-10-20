@@ -1,10 +1,18 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+ <HeadNavigation/>
+
   <router-view/>
 </template>
+
+<script>
+import HeadNavigation from '@/components/HeadNavigation.vue';
+
+export default{
+  components: 
+  {HeadNavigation},
+}
+
+</script>
 
 <style>
 #app {

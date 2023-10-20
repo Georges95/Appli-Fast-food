@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '@/views/HomeView.vue'
+//import McdoView from '@/views/McdoView.vue'
+//import KfcView from '@/views/KfcView.vue'
+//import BurgerkingView from '@/views/BurgerkingView.vue'
 
 const routes = [
   {
@@ -7,19 +10,34 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+  /*{
+    path: '/menu-mc-burger',
+    name: 'mcdo',
+    component: ()=> import ('@/views/McdoView.vue')
+  },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/menu-kfc-burger',
+    name: 'kfc',
+    component: ()=> import ('@/views/KfcView.vue')
+  },
+  {
+    path: '/menu-bk-burger',
+    name: 'bking',
+    component: ()=> import ('@/views/BurgerkingView.vue')
+  },*/
+  {
+    path: '/menu/:id/:slug',
+    name: 'menu.show',
+    component: () => import('@/views/MenuView.vue'),
+    props: (route) => ({id: parseInt(route.params.id)}),
   }
+  
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+  //linkActiveClass: "lien-actif",
 })
 
 export default router
